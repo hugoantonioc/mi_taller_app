@@ -1,0 +1,12 @@
+# carga.py
+import pandas as pd from sqlalchemy import create_engine
+
+# Leer archivo CSV transformado
+df = pd.read_csv('datos_transformados.csv')
+
+# Conectar a la base de datos (ejemplo con SQLite)
+engine = create_engine('sqlite:///ventas.db')
+#Conectarse a la BD Oracle
+
+# Cargar datos en la tabla 'ventas'
+df.to_sql('ventas', engine, if_exists='replace', index=False)
